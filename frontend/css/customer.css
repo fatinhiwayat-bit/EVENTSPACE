@@ -1,0 +1,180 @@
+body:has(#app:not(.d-none):not(:has(.manager:not(.d-none))):not(:has(.admin:not(.d-none)))) {
+    /* Palet biru (pelbagai tona) */
+    --biru-gelap: #0b1f44;
+    --biru-tua: #13367a;
+    --biru-utama: #2457a7;
+    --biru-sederhana: #3b82f6;
+    --biru-cerah: #60a5fa;
+    --biru-cair: #bfdbfe;
+    --biru-sangat-cair: #eff6ff;
+    --teks: #0f1b33;
+
+    background: linear-gradient(180deg, var(--biru-sangat-cair) 0%, #ffffff 100%);
+    color: var(--teks);
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    /* Header */
+    & > header {
+        background: linear-gradient(120deg, var(--biru-gelap), var(--biru-tua) 60%, var(--biru-utama));
+        border-bottom: 4px solid var(--biru-cerah);
+        box-shadow: 0 6px 20px rgba(11, 31, 68, 0.25);
+    }
+
+    & > header h2 {
+        letter-spacing: 0.5px;
+    }
+
+    & > header small {
+        color: var(--biru-cair);
+    }
+
+    /* Banner hero di atas senarai event */
+    & #events {
+        position: relative;
+    }
+
+    & #events::before {
+        content: "Cari dan tempah tiket event kegemaran anda";
+        display: block;
+        padding: 18px 22px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+        background: linear-gradient(90deg, var(--biru-utama), var(--biru-sederhana) 60%, var(--biru-cerah));
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        box-shadow: 0 8px 22px rgba(36, 87, 167, 0.25);
+    }
+
+    /* Tab navigasi */
+    & #app > div:first-child {
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--biru-cair);
+    }
+
+    & #app > div:first-child > button {
+        background: #ffffff;
+        color: var(--biru-utama);
+        border: 1px solid var(--biru-cerah);
+        border-radius: 999px;
+        padding: 8px 20px;
+    }
+
+    & #app > div:first-child > button:hover {
+        background: var(--biru-sangat-cair);
+    }
+
+    /* Tab aktif: biru gelap, ikut section yang dipaparkan */
+    & #app:has(#events:not(.d-none)) > div:first-child > button[onclick="showTab('events')"],
+    & #app:has(#bookings:not(.d-none)) > div:first-child > button[onclick="showTab('bookings')"],
+    & #app:has(#venues:not(.d-none)) > div:first-child > button[onclick="showTab('venues')"] {
+        background: var(--biru-gelap);
+        border-color: var(--biru-gelap);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(11, 31, 68, 0.3);
+    }
+
+    /* Tajuk */
+    & h3 {
+        color: var(--biru-gelap);
+        font-weight: 700;
+        letter-spacing: 0.3px;
+    }
+
+    /* Carian */
+    & #search {
+        border-radius: 999px;
+        border: 1px solid var(--biru-cerah);
+        padding: 8px 16px;
+    }
+
+    & #search:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.35);
+    }
+
+    /* Kad event dan venue */
+    & .card {
+        background: #ffffff;
+        border: 1px solid var(--biru-cair);
+        border-top: 5px solid var(--biru-sederhana);
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(11, 31, 68, 0.10);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    & .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 26px rgba(11, 31, 68, 0.18);
+    }
+
+    /* Badge "published" */
+    & .badge {
+        border-radius: 999px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+    }
+
+    /* Butang */
+    & .btn {
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 8px 18px;
+    }
+
+    & .btn-primary {
+        background: linear-gradient(135deg, var(--biru-utama), var(--biru-sederhana));
+        border: none;
+        box-shadow: 0 4px 12px rgba(36, 87, 167, 0.3);
+    }
+
+    & .btn-primary:hover {
+        background: linear-gradient(135deg, var(--biru-tua), var(--biru-utama));
+    }
+
+    & .btn-outline-primary {
+        color: var(--biru-utama);
+        border-color: var(--biru-cerah);
+    }
+
+    & .btn-outline-primary:hover {
+        background: var(--biru-cair);
+        color: var(--biru-gelap);
+    }
+
+    /* Pagination (fungsi tidak diubah) */
+    & #events > .my-3 .btn-outline-secondary {
+        color: var(--biru-utama);
+        border-color: var(--biru-cerah);
+        min-width: 90px;
+    }
+
+    /* Jadual Bookings */
+    & .table {
+        border-radius: 14px;
+        overflow: hidden;
+    }
+
+    & .table th {
+        background: linear-gradient(90deg, var(--biru-cair), var(--biru-sangat-cair));
+        color: var(--biru-gelap);
+    }
+
+    /* Mesej amaran */
+    & #alert .alert {
+        border-radius: 12px;
+    }
+
+    /* Skrin kecil */
+    @media (max-width: 576px) {
+        & > header h2 {
+            font-size: 22px;
+        }
+
+        & #events::before {
+            font-size: 16px;
+        }
+    }
+}
