@@ -1,0 +1,3 @@
+async function showTab(tab){['events','bookings','venues','create','createVenue','users'].forEach(x=>el(x).classList.toggle('d-none',x!==tab));try{if(tab==='events')await loadEvents(0);if(tab==='bookings')await loadBookings();if(tab==='venues'||tab==='create'||tab==='createVenue')await loadVenues();if(tab==='users')await loadUsers()}catch(e){notice(e.message,true)}}
+el('eventForm').onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target);let d=Object.fromEntries(f);d.event_date=d.event_date.replace('T',' ')+':00';try{await request('/events','POST',d);e.target.reset();notice('Event created');await showTab('events')}catch(err){notice(err.message,true)}};
+if(token)init();

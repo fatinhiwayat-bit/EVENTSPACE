@@ -1,0 +1,11 @@
+<?php
+function UserController(string $resource, ?int $id, array $part, string $method):void {
+if($resource==='users'){
+  $u=currentUser();
+  if($method==='GET'&&$id===null){roles(['admin']);reply(200,db()->query('SELECT id,name,email,role,created_at FROM users ORDER BY id DESC')->fetchAll());}
+  if($method==='GET'&&$id!==null){need($u['role']==='admin'||(int)$u['id']===$id,'Access denied',403);$s=db()->prepare('SELECT id,name,email,role,created_at FROM users WHERE id=?');$s->execute([$id]);$record=$s->fetch();reply($record?200:404,$record?:['error'=>'Not found']);}
+  if($method==='POST'&&$id===null){roles(['admin']);$d=body();requireFields($d,['name','email','password','role']);need(in_array($d['role'],['admin','organiser','customer'],true),'Invalid role');need(filter_var($d['email'],FILTER_VALIDATE_EMAIL)!==false,'Invalid email');need(strlen($d['password'])>=8,'Password too short');$s=db()->prepare('INSERT INTO users(name,email,password_hash,role) VALUES(?,?,?,?)');$s->execute([$d['name'],$d['email'],password_hash($d['password'],PASSWORD_DEFAULT),$d['role']]);reply(201,['id'=>(int)db()->lastInsertId()]);}
+  if(in_array($method,['PUT','PATCH'],true)&&$id!==null){need($u['role']==='admin'||(int)$u['id']===$id,'Access denied',403);$d=body();need(count($d)>0,'No changes provided');$fields=[];$values=[];foreach(['name','email'] as $f)if(isset($d[$f])){$fields[]="$f=?";$values[]=$d[$f];}if(isset($d['password'])){need(strlen($d['password'])>=8,'Password too short');$fields[]='password_hash=?';$values[]=password_hash($d['password'],PASSWORD_DEFAULT);}if(isset($d['role'])){roles(['admin']);need(in_array($d['role'],['admin','organiser','customer'],true),'Invalid role');$fields[]='role=?';$values[]=$d['role'];}need((bool)$fields,'No valid changes');$values[]=$id;$s=db()->prepare('UPDATE users SET '.implode(',',$fields).' WHERE id=?');$s->execute($values);need($s->rowCount()>0,'User not found or no changes',404);reply(200,['message'=>'User updated']);}
+  if($method==='DELETE'&&$id!==null){roles(['admin']);need($id!==(int)$u['id'],'Cannot delete own account');$s=db()->prepare('DELETE FROM users WHERE id=?');$s->execute([$id]);need($s->rowCount()>0,'Not found',404);reply(200,['message'=>'User deleted']);}
+ }
+}
