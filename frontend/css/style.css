@@ -1,1 +1,149 @@
-body{background:#f5f7fb}header{background:#18243c;color:white}.card{border:0;box-shadow:0 6px 23px #26355313;border-radius:16px}.badge{font-size:.8rem}.btn{border-radius:9px}#alert{position:sticky;top:0;z-index:10}.muted{color:#667085}.card p{min-height:45px}
+/* General page styling */
+body {
+    background: #f5f7fb;
+    color: #263238;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+/* Header */
+header {
+    background: #18243c;
+    color: white;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+header h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+header small {
+    color: #d6dce8;
+}
+
+/* Main content */
+main {
+    min-height: 70vh;
+}
+
+/* Cards */
+.card {
+    border: 1px solid #e5e9f0;
+    box-shadow: 0 3px 12px rgba(38, 53, 83, 0.08);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.card p {
+    min-height: 45px;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: #2457a7;
+    border-color: #2457a7;
+}
+
+.btn-primary:hover {
+    background-color: #1b4385;
+    border-color: #1b4385;
+}
+
+/* Headings */
+h3 {
+    color: #18243c;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+h4 {
+    color: #18243c;
+    font-weight: 600;
+}
+
+/* Form fields */
+.form-control,
+.form-select {
+    border: 1px solid #d5dbe5;
+    border-radius: 7px;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #527fbd;
+    box-shadow: 0 0 0 0.15rem rgba(36, 87, 167, 0.12);
+}
+
+/* Tables */
+table {
+    background: white;
+}
+
+.table th {
+    background: #edf1f7;
+    color: #263553;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Status badges */
+.badge {
+    font-size: 12px;
+    padding: 6px 9px;
+}
+
+/* Secondary text */
+.muted {
+    color: #667085;
+}
+
+/* Alert messages */
+#alert {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Navigation buttons */
+#app > div:first-child {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e1e6ee;
+}
+
+/* Event search */
+#search {
+    max-width: 280px;
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+    header h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    #search {
+        max-width: 100%;
+    }
+
+    #app > div:first-child .btn {
+        flex: 1 1 auto;
+    }
+}
