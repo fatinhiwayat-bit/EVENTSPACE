@@ -1,0 +1,33 @@
+/* Clean Corporate Theme - Arif */
+body {
+    background-color: #f8fafc !important;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+header {
+    background-color: #1e293b !important;
+}
+
+.card {
+    border-radius: 10px !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+.btn-primary {
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8 !important;
+}
+
+.btn-outline-primary {
+    color: #2563eb !important;
+    border-color: #2563eb !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2563eb !important;
+    color: white !important;
+}

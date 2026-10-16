@@ -1,0 +1,1 @@
+async function loadUsers(){const users=await request('/users');el('usersList').innerHTML=`<div class="table-responsive"><table class="table table-striped"><tr><th>Name</th><th>Email</th><th>Role</th></tr>${users.map(u=>`<tr><td>${html(u.name)}</td><td>${html(u.email)}</td><td>${html(u.role)}</td></tr>`).join('')}</table></div>`}
